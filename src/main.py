@@ -16,7 +16,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message: Message):
-    if (message.author.id == os.getenv("BALE_USER_ID")):
+    if (str(message.author.id) != os.getenv("BALE_USER_ID")):
         await message.reply("متأسفم. شما اجازه بهره برداری از این بازو را ندارید.")
         return
     print(message.content, ' saving to memos')
