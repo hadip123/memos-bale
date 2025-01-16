@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 memos_token = os.getenv("MEMOS_TOKEN")
+memos_host = os.getenv("MEMOS_HOST")
 client = Bot(token=os.getenv("BALE_TOKEN"))
 
 
@@ -34,7 +35,7 @@ async def on_successful_payment(successful_payment: SuccessfulPayment):
 
 
 def save_in_memos(content: str):
-    url = "http://10.10.10.20:5230/api/v1/memos"
+    url = "{}/api/v1/memos".format(memos_host)
     payload = {
         "content": content,
         "visibility": "PUBLIC",
